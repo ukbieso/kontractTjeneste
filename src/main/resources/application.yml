@@ -1,0 +1,92 @@
+spring:
+  profiles: default
+  flyway:
+    enabled: true
+    location: classpath:/db/migration
+    baselineOnMigrate: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    #url: jdbc:postgresql://localhost:5432/contract_v1
+    URL: jdbc:postgresql://ps-contract.c0riy1xojgsv.eu-west-1.rds.amazonaws.com:5432/ps_kontrakt
+    username: ps
+    #username: postgres
+    password: User1234
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+    #generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+
+  application:
+    name: kontraktstjeneste
+
+server:
+  port: 8080
+
+
+
+
+---
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:postgresql://
+    username:
+    password:
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+
+  application:
+    name: kontraktstjeneste
+
+
+server:
+  port: 8280
+
+
+
+
+
+
+
+
+
+
+---
+
+spring:
+  profiles: test
+
+  application:
+    name: kontraktstjeneste
+
+server:
+  port: 8280
+
+
+
+
+
+
+
+
+---
+
+spring:
+  profiles: qa
+
+  application:
+    name: kontraktstjeneste
